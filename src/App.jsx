@@ -6,19 +6,23 @@ import Shop from './components/Shop';
 import Login from './components/Login'
 import Header from './components/Header'
 import Footer from './components/Footer'
+import useWindowSize from './useWindowSize';
 function App() {
-
+  const { height } = useWindowSize();
   return (
     <Router>
       <div>
-        <Header />
-        <Routes>
-          <Route path='/' element={<Home />}></Route>
-          <Route path='/Login' element={<Login />}></Route>
-          <Route path='/shop' element={<Shop />}></Route>
-        </Routes>
+
+        <div style={{ minHeight: height }}>
+          <Header />
+          <Routes>
+            <Route path='/Temp/' element={<Home />} />
+            <Route path='/Login' element={<Login />} />
+            <Route path='/shop' element={<Shop />} />
+          </Routes>
+        </div>
+        <Footer />
       </div>
-      <Footer />
     </Router>
 
   )

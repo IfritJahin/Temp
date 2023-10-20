@@ -1,28 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Carousel from 'react-bootstrap/Carousel';
-import { Container } from 'react-bootstrap';
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import '../assets/home.css';
 import Home_p from './home_p';
 import appleImg from '../img/app3.jpg';
 import apple2Img from '../img/app1.jpg';
 import apple3Img from '../img/app2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleArrowRight as faCircleArrowRight } from '@fortawesome/free-solid-svg-icons'
-import { faCircleArrowLeft as faCircleArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import { faCartShopping as faCartShopping } from '@fortawesome/free-solid-svg-icons'
+import { faBars as faBars } from '@fortawesome/free-solid-svg-icons'
 import Button from 'react-bootstrap/Button';
+import { BsCart3 } from "react-icons/bs";
+import Tooltip from 'react-bootstrap/Tooltip';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
 function Home() {
-  const [homeproIndex, sethomeproIndex] = useState(0);
-  const prevPro = () => {
-    console.log("Prev button clicked");
-    if (homeproIndex > 0) sethomeproIndex(homeproIndex - 1);
-  }
-
-  const nextPro = () => {
-    console.log("Next button clicked");
-    if (homeproIndex < Home_p.length - 1) sethomeproIndex(homeproIndex + 1);
-  }
-
+  const settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 1000,
+  };
 
   return (
     <main>
@@ -64,30 +67,43 @@ function Home() {
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
-      <h2 className='hp'>Popular Products</h2>
-      <section className='popular'>
-        <Button><FontAwesomeIcon icon={faCircleArrowLeft} size="2x" style={{ color: "#a5b5cf", }} /></Button>
-        <button className="left-arrow" onClick={prevPro}><FontAwesomeIcon icon={faCircleArrowLeft} size="2x" style={{ color: "#a5b5cf", }} /></button>
-        <div className='p_product' style={{ transform: `translateX(-${homeproIndex * 100}%)` }}>
-          {
-            Home_p.map((curElement) => {
-              return (
-                <div className='boxes' key={curElement.id}>
-                  <div className='box'>
-                    <img src={curElement.img} alt=''></img>
-                    <div className="box-content">
-                      <span className="box-title">{curElement.Name || 'Product Name'}</span>
-                      <h4 className="box-description">{curElement.type || 'Product Description'}</h4>
-                      <p className="box-price">Price: {curElement.price}</p>
+      <>
+        <h2 className='hp'>Popular Products</h2>
+        <div className="popular">
+          <div className='container'>
+            <Slider {...settings}>
+              {
+                Home_p.map((curElement) => {
+                  return (
+                    <div className='boxes' key={curElement.id}>
+                      <div className='box'>
+                        <img className='img' src={curElement.img} alt=''>
+                        </img>
+                        <div className='cardicons'>
+                          <OverlayTrigger variant='light' overlay={<Tooltip id="tooltip" >Add To Cart!</Tooltip>}>
+                            <span className="d-inline-block">
+                              <FontAwesomeIcon icon={faCartShopping} style={{ color: "", fontSize: '20px', margin: '5px' }} />
+                            </span>
+                          </OverlayTrigger>
+                          <OverlayTrigger overlay={<Tooltip id="tooltip">Add To Wishlist!</Tooltip>}>
+                            <span className="d-inline-block">
+                              <FontAwesomeIcon icon={faBars} style={{ color: "", fontSize: '20px', margin: '5px' }} />
+                            </span>
+                          </OverlayTrigger>
+                        </div>
+                        <span className="box-title">{curElement.Name || 'Product Name'}</span>
+                        <h4 className="box-description">{curElement.type || 'Product Description'}</h4>
+                        <p className="box-price ">Price: {curElement.price}</p>
+                        <Button variant="dark" size="m">Select Options</Button>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              )
-            })
-          }
+                  )
+                })
+              }
+            </Slider>
+          </div>
         </div>
-        <button className="right-arrow" onClick={nextPro}><FontAwesomeIcon icon={faCircleArrowRight} size="2x" style={{ color: "#a5b5cf", }} /></button>
-      </section>
+      </>
     </main>
   );
 };

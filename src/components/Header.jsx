@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../img/Logo.png'
+import BL from '../img/bl2.png'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -47,12 +48,12 @@ function Header({ onSearch }) {
 
     return (
         <div>
-            <header className='bg-dark fixed-top' variant="dark">
+            <header className='gradient-navbar fixed-top' variant="dark">
                 {isScrolled ? (
                     <Card.Header className="gradient-navbar d-flex align-items-center justify-content-between px-3 py-0 shadow">
-                        <img className="mr-3" style={{ width: '90px', marginLeft: '40px' }} src={Logo} alt="Logo" />
+                        <img className="mr-3" style={{ width: '100px', marginLeft: '40px' }} src={BL} alt="Logo" />
                         <Navbar className="d-flex justify-content-center flex-grow-1 text-white align-items-center flex-grow-1">
-                            <Link to='/' className='nav-link text-decoration-none m-3'>Home</Link>
+                            <Link to='/Temp/' className='nav-link text-decoration-none m-3'>Home</Link>
                             <Link to='/shop' className='nav-link text-decoration-none m-3'>Shop</Link>
                             <Link to='/products' className='nav-link text-decoration-none m-3'>Products</Link>
                             <Link to='/contact' className='nav-link text-decoration-none m-3'>Contact</Link>
@@ -72,29 +73,26 @@ function Header({ onSearch }) {
                         </Navbar>
                         <section id='icons' className="d-flex align-items-center px-1 text-white" >
                             <div className="d-flex align-items-center">
-                                <div className="d-flex align-items-center m-1">
-                                    <FontAwesomeIcon icon={faUser} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                    <span className="m-2 accounttext">My Account</span>
+                                <div className="d-flex align-items-center m-3">
+                                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "white", fontSize: '20px', verticalAlign: 'middle' }} />
+                                </div>
+                                <div className="d-flex align-items-center m-3">
+                                    <FontAwesomeIcon icon={faUser} style={{ color: "white", fontSize: '20px' }} />
                                 </div>
 
-                                <div className="d-flex align-items-center m-2">
-                                    <FontAwesomeIcon icon={faCartShopping} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                    <span className="m-2 text">Your cart</span>
+                                <div className="d-flex align-items-center m-3">
+                                    <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '20px' }} />
                                 </div>
 
-                                <div className="d-flex align-items-center m-1">
-                                    <FontAwesomeIcon icon={faBars} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                    <span className="m-2 text">Wishlist</span>
-                                </div>
-                                <div className="d-flex align-items-center m-1">
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "#4084a1", fontSize: '20px', verticalAlign: 'middle' }} />
+                                <div className="d-flex align-items-center m-3">
+                                    <FontAwesomeIcon icon={faBars} style={{ color: "white", fontSize: '20px' }} />
                                 </div>
                             </div>
                         </section>
                     </Card.Header>
                 ) : (
                     <>
-                        <Card.Header className="bg d-flex align-items-center px-3">
+                        <Card.Header className="bg-light d-flex align-items-center px-3">
                             <img className="mr-3" style={{ width: '100px', marginLeft: '40px' }} src={Logo} alt="Logo" />
                             <input
                                 className="form-control search-input mr-3"
@@ -110,11 +108,13 @@ function Header({ onSearch }) {
                                 }}
                             />
                             <Button variant="dark"><FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "#4084a1", fontSize: '20px', verticalAlign: 'middle' }} /></Button>
-                            <section id='icons' className="d-flex text-white  px-1" style={{ marginLeft: '45px', marginRight: '10px' }}>
+                            <section id='icons' className="d-flex text-dark  px-1" style={{ marginLeft: '45px', marginRight: '10px' }}>
                                 <div className="d-flex align-items-center">
                                     <div className="d-flex align-items-center m-1">
-                                        <FontAwesomeIcon icon={faUser} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                        <span className="m-2 accounttext">My Account</span>
+                                        <Link className='text-decoration-none text-dark'>
+                                            <FontAwesomeIcon icon={faUser} style={{ color: "#4084a1", fontSize: '20px' }} />
+                                            <span className="m-2 accounttext">My Account</span>
+                                        </Link>
                                     </div>
 
                                     <div className="d-flex align-items-center m-2">
@@ -130,7 +130,7 @@ function Header({ onSearch }) {
                             </section>
                         </Card.Header>
                         <Navbar className="gradient-navbar text-white  py-2">
-                            <Link to='/' className='nav-link text-decoration-none m-3'>Home</Link>
+                            <Link to='/Temp/' className='nav-link text-decoration-none m-3'>Home</Link>
                             <Link to='/shop' className='nav-link text-decoration-none m-3'>Shop</Link>
                             <Link to='/products' className='nav-link text-decoration-none m-3'>Products</Link>
                             <Link to='/contact' className='nav-link text-decoration-none m-3'>Contact</Link>

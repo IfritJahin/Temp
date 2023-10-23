@@ -12,19 +12,45 @@ import apple3Img from '../img/app2.png';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping as faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faBars as faBars } from '@fortawesome/free-solid-svg-icons'
-import Button from 'react-bootstrap/Button';
-import { BsCart3 } from "react-icons/bs";
-import Tooltip from 'react-bootstrap/Tooltip';
-import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import { Card, Image, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+
+
 function Home() {
+
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
+
     slidesToShow: 3,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 1000,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 600,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          initialSlide: 2
+        }
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1
+        }
+      }
+    ]
   };
 
   return (
@@ -68,7 +94,7 @@ function Home() {
         </Carousel.Item>
       </Carousel>
       <>
-        <h2 className='hp'>Popular Products</h2>
+        <h2 className='hp text-center'>Popular Products</h2>
         <div className="popular">
           <div className='container'>
             <Slider {...settings}>
@@ -76,26 +102,27 @@ function Home() {
                 Home_p.map((curElement) => {
                   return (
                     <div className='boxes' key={curElement.id}>
-                      <div className='box'>
-                        <img className='img' src={curElement.img} alt=''>
-                        </img>
-                        <div className='cardicons'>
-                          <OverlayTrigger variant='light' overlay={<Tooltip id="tooltip" >Add To Cart!</Tooltip>}>
-                            <span className="d-inline-block">
-                              <FontAwesomeIcon icon={faCartShopping} style={{ color: "", fontSize: '20px', margin: '5px' }} />
-                            </span>
-                          </OverlayTrigger>
-                          <OverlayTrigger overlay={<Tooltip id="tooltip">Add To Wishlist!</Tooltip>}>
-                            <span className="d-inline-block">
-                              <FontAwesomeIcon icon={faBars} style={{ color: "", fontSize: '20px', margin: '5px' }} />
-                            </span>
-                          </OverlayTrigger>
-                        </div>
-                        <span className="box-title">{curElement.Name || 'Product Name'}</span>
-                        <h4 className="box-description">{curElement.type || 'Product Description'}</h4>
-                        <p className="box-price ">Price: {curElement.price}</p>
-                        <Button variant="dark" size="m">Select Options</Button>
-                      </div>
+                      <Card className='box'>
+                        <Card.Img variant="top" className='img' src={curElement.img} alt='' />
+                        <Card.Body>
+                          <div className='cardicons'>
+                            <OverlayTrigger variant='light' overlay={<Tooltip id="tooltip">Add To Cart!</Tooltip>}>
+                              <span className="d-inline-block">
+                                <FontAwesomeIcon icon={faCartShopping} style={{ color: "", fontSize: '20px', margin: '5px' }} />
+                              </span>
+                            </OverlayTrigger>
+                            <OverlayTrigger overlay={<Tooltip id="tooltip">Add To Wishlist!</Tooltip>}>
+                              <span className="d-inline-block">
+                                <FontAwesomeIcon icon={faBars} style={{ color: "", fontSize: '20px', margin: '5px' }} />
+                              </span>
+                            </OverlayTrigger>
+                          </div>
+                          <Card.Title className="box-title">{curElement.Name || 'Product Name'}</Card.Title>
+                          <Card.Text className="box-description">{curElement.type || 'Product Description'}</Card.Text>
+                          <Card.Text className="box-price">Price: {curElement.price}</Card.Text>
+                          <Button variant="none" className='rounded-pill' size="lg" style={{ color: 'white', background: 'rgba(10,27,52,1)', }} size="m">Select Options</Button>
+                        </Card.Body>
+                      </Card>
                     </div>
                   )
                 })

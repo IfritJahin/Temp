@@ -12,27 +12,21 @@
 }
 
 .popular {
-    margin: 0 auto;
     padding: 0;
     font-family: inherit;
     box-sizing: border-box;
-    background: #fff;
+    background: #ffffff;
     width: 90%;
     text-align: center;
-    margin-bottom: 60px;
     align-items: center;
-    transition: transform .2s; 
-    margin: 0 auto; 
+    margin: 0 auto;
+    margin-top: 50px;
+    margin-bottom: 60px;
+    max-width: 1200px;
 
     
 }
-.container{
-    margin: 0 auto;
-    width: 100%;
-    height: 100vh;
-    border-color: white;
-    align-items: center;
-}
+
 .boxes {
     text-align: center;
 
@@ -40,7 +34,7 @@
 .img{
     display: flex;
     margin: 0 auto;
-    height: 40vh;
+    height: auto;
     width: 80%;
     border-radius: 5%;
     font-family: inherit;
@@ -48,14 +42,15 @@
 }
 
 .box {
+    border: 2px ;
     background: #ffffff;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 10px;
-    width: 300px;
-    margin-top: 60px;
-    margin-bottom: 60px;
-    height: 75vh;
-    align-items: center;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+
 
 }
 .cardicons{
@@ -63,7 +58,7 @@
 }
 .box:hover{
     transform: translateY(-10px);
-    transform: scale(1.1); 
+    /*transform: scale(1.1); */
 
 }
 .box:hover .cardicons{
@@ -73,7 +68,21 @@
 .box-price{
     color: red;
 }
-
+.slick-slide > div {
+    margin: 0 10px;
+  }
+  .slick-list {
+    margin: 0 -10px;
+  }
+@media (max-width: 768px) {
+    .img {
+        width: 90%;
+    }
+    .box {
+        width: 90%;
+        margin: 1%; /* Reduce margin on smaller devices */
+    }
+}
 .left-arrow, .right-arrow {
     position: absolute;
     top: 50%; 
@@ -82,10 +91,7 @@
     border: none;
     border-color: none;
 
-
-
 }
-
 .left-arrow {
     left: 0; /* Positioned at the left edge */
     background-color: transparent;

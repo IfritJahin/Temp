@@ -2,6 +2,7 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Logo from '../img/Logo.png'
 import BL from '../img/bl2.png'
+import LoginModel from './LoginModel'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -9,16 +10,11 @@ import { faMagnifyingGlass as faMagnifyingGlass } from '@fortawesome/free-solid-
 import { faCartShopping as faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faUser as faUser } from '@fortawesome/free-solid-svg-icons'
 import { faBars as faBars } from '@fortawesome/free-solid-svg-icons'
-import { Button, Container, Card, Navbar } from 'react-bootstrap';
-function Header({ onSearch }) {
-    const [searchTerm, setSearchTerm] = useState('');
-    const [isScrolled, setIsScrolled] = useState(false);
+import { Button, Container, Card, Navbar, Col, Form, Row, Nav } from 'react-bootstrap';
 
-    const handleSearch = () => {
-        if (onSearch) {
-            onSearch(searchTerm);
-        }
-    };
+function Header({ onSearch }) {
+
+    const [isScrolled, setIsScrolled] = useState(false);
     window.addEventListener('DOMContentLoaded', (event) => {
         const selectElem = document.querySelector('.select');
 
@@ -45,6 +41,7 @@ function Header({ onSearch }) {
             window.removeEventListener('scroll', handleScroll);
         };
     }, []);
+    const [modalShow, setModalShow] = React.useState(false);
 
     return (
         <div>
@@ -73,11 +70,17 @@ function Header({ onSearch }) {
                         </Navbar>
                         <section id='icons' className="d-flex align-items-center px-1 text-white" >
                             <div className="d-flex align-items-center">
-                                <div className="d-flex align-items-center m-3">
+                                <div className="d-flex align-items-center m-3" onClick={() => setModalShow(true)}>
                                     <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "white", fontSize: '20px', verticalAlign: 'middle' }} />
                                 </div>
                                 <div className="d-flex align-items-center m-3">
-                                    <FontAwesomeIcon icon={faUser} style={{ color: "white", fontSize: '20px' }} />
+                                    <Link className='text-decoration-none text-dark' onClick={() => setModalShow(true)}>
+                                        <FontAwesomeIcon icon={faUser} style={{ color: "white", fontSize: '20px' }} />
+                                    </Link>
+                                    <LoginModel
+                                        show={modalShow}
+                                        onHide={() => setModalShow(false)}
+                                    />
                                 </div>
 
                                 <div className="d-flex align-items-center m-3">
@@ -92,43 +95,49 @@ function Header({ onSearch }) {
                     </Card.Header>
                 ) : (
                     <>
-                        <Card.Header className="bg-light d-flex align-items-center px-3">
-                            <img className="mr-3" style={{ width: '100px', marginLeft: '40px' }} src={Logo} alt="Logo" />
-                            <input
-                                className="form-control search-input mr-3"
-                                type="text"
-                                placeholder="Search..."
-                                value={searchTerm}
-                                onChange={(e) => setSearchTerm(e.target.value)}
-                                style={{
-                                    width: '400px',
-                                    flex: '0 1 auto',
-                                    marginLeft: '300px',
+                        <Card.Header className="bg-light d-flex align-items-center justify-content-between px-2 py-0 shadow">
+                            <div className="d-flex align-items-center">
+                                <img className="mr-3" style={{ width: '100px', marginLeft: '100px' }} src={Logo} alt="Logo" />
+                            </div>
+                            <div className='align-items-center h-100px w-200px'>
+                                <Form className="d-flex navbar-form navbar-left">
+                                    <Form.Control
+                                        type="search"
+                                        placeholder="Search"
+                                        className="me-2 rounded-pill"
+                                        aria-label="Search"
+                                        style={{ width: '400px', marginLeft: '80px' }}
+                                    />
+                                    <Button className="rounded-pill" variant="outline-primary">
+                                        Search
+                                    </Button>
+                                </Form>
+                            </div>
+                            <section id='icons' className="d-flex justify-content-end text-dark">
+                                <div className="d-flex align-items-center m-2">
+                                    <Link className='text-decoration-none text-dark' onClick={() => setModalShow(true)}>
+                                        <FontAwesomeIcon icon={faUser} style={{ color: "#4084a1", fontSize: '20px' }} />
+                                        <span className="m-2">My Account</span>
+                                    </Link>
+                                    <LoginModel
+                                        show={modalShow}
+                                        onHide={() => setModalShow(false)}
+                                    />
+                                </div>
 
-                                }}
-                            />
-                            <Button variant="dark"><FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "#4084a1", fontSize: '20px', verticalAlign: 'middle' }} /></Button>
-                            <section id='icons' className="d-flex text-dark  px-1" style={{ marginLeft: '45px', marginRight: '10px' }}>
-                                <div className="d-flex align-items-center">
-                                    <div className="d-flex align-items-center m-1">
-                                        <Link className='text-decoration-none text-dark'>
-                                            <FontAwesomeIcon icon={faUser} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                            <span className="m-2 accounttext">My Account</span>
-                                        </Link>
-                                    </div>
+                                <div className="d-flex align-items-center m-2">
+                                    <FontAwesomeIcon icon={faCartShopping} style={{ color: "#4084a1", fontSize: '20px' }} />
+                                    <span className="m-2 text">Your cart</span>
+                                </div>
 
-                                    <div className="d-flex align-items-center m-2">
-                                        <FontAwesomeIcon icon={faCartShopping} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                        <span className="m-2 text">Your cart</span>
-                                    </div>
-
-                                    <div className="d-flex align-items-center m-1">
-                                        <FontAwesomeIcon icon={faBars} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                        <span className="m-2 text">Wishlist</span>
-                                    </div>
+                                <div className="d-flex align-items-center m-2">
+                                    <FontAwesomeIcon icon={faBars} style={{ color: "#4084a1", fontSize: '20px' }} />
+                                    <span className="m-2 text">Wishlist</span>
                                 </div>
                             </section>
+
                         </Card.Header>
+
                         <Navbar className="gradient-navbar text-white  py-2">
                             <Link to='/Temp/' className='nav-link text-decoration-none m-3'>Home</Link>
                             <Link to='/shop' className='nav-link text-decoration-none m-3'>Shop</Link>
@@ -154,5 +163,6 @@ function Header({ onSearch }) {
         </div>
     )
 }
+
 
 export default Header

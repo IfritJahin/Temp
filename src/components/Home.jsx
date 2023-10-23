@@ -120,7 +120,7 @@ function Home() {
                           <Card.Title className="box-title">{curElement.Name || 'Product Name'}</Card.Title>
                           <Card.Text className="box-description">{curElement.type || 'Product Description'}</Card.Text>
                           <Card.Text className="box-price">Price: {curElement.price}</Card.Text>
-                          <Button variant="none" className='rounded-pill' size="lg" style={{ color: 'white', background: 'rgba(10,27,52,1)', }} size="m">Select Options</Button>
+                          <Button variant="none" className='rounded-pill' size="lg" style={{ color: 'white', background: 'rgba(10,27,52,1)', }}>Select Options</Button>
                         </Card.Body>
                       </Card>
                     </div>

@@ -21,3 +21,48 @@
     </div>
   </div>
   <Button variant="dark"><FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "#4084a1", fontSize: '20px', verticalAlign: 'middle' }} /></Button>
+
+
+
+  .left-arrow, .right-arrow {
+    position: absolute;
+    top: 50%; 
+    transform: translateY(-50%); 
+    z-index: 10; 
+    border: none;
+    border-color: none;
+
+}
+.left-arrow {
+    left: 0; /* Positioned at the left edge */
+    background-color: transparent;
+    opacity: 0;
+    
+}
+
+.right-arrow {
+    right: 0; /* Positioned at the right edge */
+    background-color: transparent;
+    opacity: 0;
+}
+.popular:hover .left-arrow, 
+.popular:hover .right-arrow {
+    opacity: 1;
+}
+
+
+<div>
+  
+  <div className='cardicons'>
+    <OverlayTrigger variant='light' overlay={<Tooltip id="tooltip">Add To Cart!</Tooltip>}>
+      <span className="d-inline-block">
+        <FontAwesomeIcon icon={faCartShopping} style={{ color: "", fontSize: '20px', margin: '5px' }} />
+      </span>
+    </OverlayTrigger>
+    <OverlayTrigger overlay={<Tooltip id="tooltip">Add To Wishlist!</Tooltip>}>
+      <span className="d-inline-block">
+        <FontAwesomeIcon icon={faBars} style={{ color: "", fontSize: '20px', margin: '5px' }} />
+      </span>
+    </OverlayTrigger>
+  </div>
+</div>

@@ -45,119 +45,148 @@ function Header({ onSearch }) {
 
     return (
         <div>
-            <header className='gradient-navbar fixed-top' variant="dark">
+            <header className='fixed-top'>
                 {isScrolled ? (
-                    <Card.Header className="gradient-navbar d-flex align-items-center justify-content-between px-3 py-0 shadow">
-                        <img className="mr-3" style={{ width: '100px', marginLeft: '40px' }} src={BL} alt="Logo" />
-                        <Navbar className="d-flex justify-content-center flex-grow-1 text-white align-items-center flex-grow-1">
-                            <Link to='/Temp/' className='nav-link text-decoration-none m-3'>Home</Link>
-                            <Link to='/shop' className='nav-link text-decoration-none m-3'>Shop</Link>
-                            <Link to='/products' className='nav-link text-decoration-none m-3'>Products</Link>
-                            <Link to='/contact' className='nav-link text-decoration-none m-3'>Contact</Link>
-                            <Link to='/help' className='nav-link text-decoration-none m-3'>Help & Support</Link>
+                    <Navbar collapseOnSelect expand="sm" className="navbar-dark text-white d-flex align-items-center justify-content-between px-3 py-0 shadow" style={{ backgroundColor: '#0a1b34' }}>
+                        <Link to='/Temp/'>
+                            <Navbar.Brand>
+                                <img className="mr-3" style={{ width: '100px', marginLeft: '40px' }} src={BL} alt="Logo" />
+                            </Navbar.Brand>
+                        </Link>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav text-white " />
+                        <Navbar.Collapse id="responsive-navbar-nav text-white" >
+                            <Nav className="d-flex justify-content-center flex-grow-1 text-white align-items-center flex-grow-1" >
+                                <Link to='/Temp/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
+                                <Link to='/shop' className='nav-link text-white text-decoration-none m-3'>Shop</Link>
+                                <Link to='/products' className='nav-link text-white text-decoration-none m-3'>Products</Link>
+                                <Link to='/contact' className='nav-link text-white  text-decoration-none m-3'>Contact</Link>
+                                <Link to='/help' className='nav-link text-white text-decoration-none m-3'>Help & Support</Link>
 
-                            <div className="dropdown">
-                                <button className="btn text-white text-decoration-none border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    All Categories
-                                </button>
-                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a className="dropdown-item" href="#">All Categories</a>
-                                    <a className="dropdown-item" href="#">Laptops</a>
-                                    <a className="dropdown-item" href="#">Phones</a>
-                                    {/* ... other items ... */}
+                                <div className="dropdown">
+                                    <button className="btn text-white text-decoration-none border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        All Categories
+                                    </button>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a className="dropdown-item" href="#">All Categories</a>
+                                        <a className="dropdown-item" href="#">Laptops</a>
+                                        <a className="dropdown-item" href="#">Phones</a>
+                                        {/* ... other items ... */}
+                                    </div>
                                 </div>
-                            </div>
-                        </Navbar>
-                        <section id='icons' className="d-flex align-items-center px-1 text-white" >
-                            <div className="d-flex align-items-center">
-                                <div className="d-flex align-items-center m-3" onClick={() => setModalShow(true)}>
-                                    <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "white", fontSize: '20px', verticalAlign: 'middle' }} />
-                                </div>
-                                <div className="d-flex align-items-center m-3">
-                                    <Link className='text-decoration-none text-dark' onClick={() => setModalShow(true)}>
-                                        <FontAwesomeIcon icon={faUser} style={{ color: "white", fontSize: '20px' }} />
-                                    </Link>
-                                    <LoginModel
-                                        show={modalShow}
-                                        onHide={() => setModalShow(false)}
-                                    />
-                                </div>
+                            </Nav>
+                            <Nav>
+                                <section id='icons' className="d-flex align-items-center px-1 text-white" >
+                                    <div className="d-flex align-items-center">
+                                        <div className="d-flex align-items-center m-3" onClick={() => setModalShow(true)}>
+                                            <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "white", fontSize: '25px', verticalAlign: 'middle' }} />
+                                        </div>
+                                        <div className="d-flex align-items-center ">
+                                            <Button variant='none' className='text-decoration-none text-dark' onClick={() => setModalShow(true)}>
+                                                <FontAwesomeIcon icon={faUser} style={{ color: "white", fontSize: '25px' }} />
+                                            </Button>
+                                            <LoginModel
+                                                show={modalShow}
+                                                onHide={() => setModalShow(false)}
+                                            />
+                                        </div>
 
-                                <div className="d-flex align-items-center m-3">
-                                    <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '20px' }} />
-                                </div>
+                                        <div className="d-flex align-items-center">
+                                            <Button variant='none' style={{ position: 'relative' }} >
+                                                <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '25px' }} />
+                                                <div className='rounded-circle bg-danger d-flex justify-content-center align-items-center'
+                                                    style={{
+                                                        color: 'white',
+                                                        position: 'absolute',
+                                                        height: '1.3rem',
+                                                        width: '1.3rem',
+                                                        bottom: 0,
+                                                        right: '0',
+                                                        transform: 'translate(5%, 5%)'
 
-                                <div className="d-flex align-items-center m-3">
-                                    <FontAwesomeIcon icon={faBars} style={{ color: "white", fontSize: '20px' }} />
-                                </div>
-                            </div>
-                        </section>
-                    </Card.Header>
+                                                    }}>3</div>
+                                            </Button>
+
+                                        </div>
+
+                                        <div className="d-flex align-items-center m-3">
+                                            <FontAwesomeIcon icon={faBars} style={{ color: "white", fontSize: '25px' }} />
+                                        </div>
+                                    </div>
+                                </section>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
                 ) : (
-                    <>
-                        <Card.Header className="bg-light d-flex align-items-center justify-content-between px-2 py-0 shadow">
-                            <div className="d-flex align-items-center">
-                                <img className="mr-3" style={{ width: '100px', marginLeft: '100px' }} src={Logo} alt="Logo" />
-                            </div>
-                            <div className='align-items-center h-100px w-200px'>
-                                <Form className="d-flex navbar-form navbar-left">
-                                    <Form.Control
-                                        type="search"
-                                        placeholder="Search"
-                                        className="me-2 rounded-pill"
-                                        aria-label="Search"
-                                        style={{ width: '400px', marginLeft: '80px' }}
-                                    />
-                                    <Button className="rounded-pill" variant="outline-primary">
-                                        Search
-                                    </Button>
-                                </Form>
-                            </div>
-                            <section id='icons' className="d-flex justify-content-end text-dark">
-                                <div className="d-flex align-items-center m-2">
-                                    <Link className='text-decoration-none text-dark' onClick={() => setModalShow(true)}>
-                                        <FontAwesomeIcon icon={faUser} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                        <span className="m-2">My Account</span>
-                                    </Link>
-                                    <LoginModel
-                                        show={modalShow}
-                                        onHide={() => setModalShow(false)}
-                                    />
+                    <Navbar collapseOnSelect expand="lg" className="d-flex align-items-center justify-content-between px-3 py-0">
+                        <Link to='/Temp/'>
+                            <Navbar.Brand>
+                                <img className="mr-3" style={{ width: '100px', marginLeft: '40px' }} src={BL} alt="Logo" />
+                            </Navbar.Brand>
+                        </Link>
+                        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+                        <Navbar.Collapse id="responsive-navbar-nav" >
+                            <Nav className=" d-flex justify-content-center flex-grow-1 text-white align-items-center flex-grow-1" >
+                                <Link to='/Temp/' className='nav-link text-white text-decoration-none m-3'>Home</Link>
+                                <Link to='/shop' className='nav-link text-white text-decoration-none m-3'>Shop</Link>
+                                <Link to='/products' className='nav-link text-white text-decoration-none m-3'>Products</Link>
+                                <Link to='/contact' className='nav-link text-white  text-decoration-none m-3'>Contact</Link>
+                                <Link to='/help' className='nav-link text-white text-decoration-none m-3'>Help & Support</Link>
+
+                                <div className="dropdown">
+                                    <button className="btn text-white text-decoration-none border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        All Categories
+                                    </button>
+                                    <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                        <a className="dropdown-item" href="#">All Categories</a>
+                                        <a className="dropdown-item" href="#">Laptops</a>
+                                        <a className="dropdown-item" href="#">Phones</a>
+                                        {/* ... other items ... */}
+                                    </div>
                                 </div>
+                            </Nav>
+                            <Nav>
+                                <section id='icons' className="d-flex align-items-center px-1 text-white" >
+                                    <div className="d-flex align-items-center">
+                                        <div className="d-flex align-items-center m-3" onClick={() => setModalShow(true)}>
+                                            <FontAwesomeIcon icon={faMagnifyingGlass} style={{ color: "white", fontSize: '25px', verticalAlign: 'middle' }} />
+                                        </div>
+                                        <div className="d-flex align-items-center ">
+                                            <Button variant='none' className='text-decoration-none text-dark' onClick={() => setModalShow(true)}>
+                                                <FontAwesomeIcon icon={faUser} style={{ color: "white", fontSize: '25px' }} />
+                                            </Button>
+                                            <LoginModel
+                                                show={modalShow}
+                                                onHide={() => setModalShow(false)}
+                                            />
+                                        </div>
 
-                                <div className="d-flex align-items-center m-2">
-                                    <FontAwesomeIcon icon={faCartShopping} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                    <span className="m-2 text">Your cart</span>
-                                </div>
+                                        <div className="d-flex align-items-center">
+                                            <Button variant='none' style={{ position: 'relative' }} >
+                                                <FontAwesomeIcon icon={faCartShopping} style={{ color: "white", fontSize: '25px' }} />
+                                                <div className='rounded-circle bg-danger d-flex justify-content-center align-items-center'
+                                                    style={{
+                                                        color: 'white',
+                                                        position: 'absolute',
+                                                        height: '1.3rem',
+                                                        width: '1.3rem',
+                                                        bottom: 0,
+                                                        right: '0',
+                                                        transform: 'translate(5%, 5%)'
 
-                                <div className="d-flex align-items-center m-2">
-                                    <FontAwesomeIcon icon={faBars} style={{ color: "#4084a1", fontSize: '20px' }} />
-                                    <span className="m-2 text">Wishlist</span>
-                                </div>
-                            </section>
+                                                    }}>3</div>
+                                            </Button>
 
-                        </Card.Header>
+                                        </div>
 
-                        <Navbar className="gradient-navbar text-white  py-2">
-                            <Link to='/Temp/' className='nav-link text-decoration-none m-3'>Home</Link>
-                            <Link to='/shop' className='nav-link text-decoration-none m-3'>Shop</Link>
-                            <Link to='/products' className='nav-link text-decoration-none m-3'>Products</Link>
-                            <Link to='/contact' className='nav-link text-decoration-none m-3'>Contact</Link>
-                            <Link to='/help' className='nav-link text-decoration-none m-3'>Help & Support</Link>
-                            <div className="dropdown">
-                                <button className="btn text-white text-decoration-none border-0 dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    All Categories
-                                </button>
-                                <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                    <a className="dropdown-item" href="#">All Categories</a>
-                                    <a className="dropdown-item" href="#">Laptops</a>
-                                    <a className="dropdown-item" href="#">Phones</a>
-                                    {/* ... other items ... */}
-                                </div>
-                            </div>
+                                        <div className="d-flex align-items-center m-3">
+                                            <FontAwesomeIcon icon={faBars} style={{ color: "white", fontSize: '25px' }} />
+                                        </div>
+                                    </div>
+                                </section>
+                            </Nav>
+                        </Navbar.Collapse>
+                    </Navbar>
 
-                        </Navbar>
-                    </>
                 )}
             </header>
         </div>

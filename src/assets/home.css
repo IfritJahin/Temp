@@ -4,10 +4,8 @@
 .hp {
     font-weight: 600; 
     font-size: 1.8em;
-    margin-bottom: 40px; 
     margin-left: 40px;
     color: #157b94;
-    margin-top: 60px;
     font-family: inherit;
 }
 
@@ -15,12 +13,11 @@
     padding: 0;
     font-family: inherit;
     box-sizing: border-box;
-    background: #ffffff;
     width: 90%;
     text-align: center;
     align-items: center;
     margin: 0 auto;
-    margin-top: 50px;
+    margin-top: 30px;
     margin-bottom: 60px;
     max-width: 1200px;
 
@@ -30,49 +27,52 @@
 .boxes {
     text-align: center;
 
+    margin: 0;  
+
 }
 .img{
     display: flex;
     margin: 0 auto;
-    height: auto;
-    width: 80%;
-    border-radius: 5%;
+    height: '288px';
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+
     font-family: inherit;
+    object-fit: cover;
     
 }
 
 .box {
     border: 2px ;
-    background: #ffffff;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+    background: #0a1b34;
+    box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    margin-top: 40px;
-    margin-bottom: 20px;
+    margin-top: 20px;  
+    margin-bottom: 10px;
     cursor: pointer;
     font-size: 1rem;
+    color: #f5f5f5;
+    transition: all 0.3s ease;
+    
 
 
 }
-.cardicons{
-    opacity: 0;
-}
-.box:hover{
+
+
+.box:hover {
     transform: translateY(-10px);
-    /*transform: scale(1.1); */
+    
+    background-color: #f5f5f5; 
+    color: #242424;
+}
 
-}
-.box:hover .cardicons{
-    transition: transform .2s; 
-    opacity: 1;
-}
 .box-price{
-    color: red;
+    color: #FF324D;
 }
 .slick-slide > div {
-    margin: 0 10px;
+    margin: 0 5px;
   }
   .slick-list {
-    margin: 0 -10px;
+    margin: 0 -5px;
   }
 @media (max-width: 768px) {
     .img {
@@ -83,28 +83,33 @@
         margin: 1%; /* Reduce margin on smaller devices */
     }
 }
-.left-arrow, .right-arrow {
+
+/* This will hide the hover-icons div by default */
+.box .hover-icons {
+    display: none;
+    position: absolute;  /* This will make it overlay on the card */
+    top: 50%;            /* Center it vertically */
+    left: 50%;           /* Center it horizontally */
+    transform: translate(-50%, -50%);  /* Necessary for perfect centering */
+    z-index: 2;          /* Ensure it appears above other content */
+  }
+  
+  /* This will make the hover-icons visible when the card is hovered */
+  .box:hover .hover-icons {
+    display: block;
+  }
+
+  /* Optionally, if you want a slight transparent dark overlay on the card to make icons and button more visible, you can add: */
+  .box:hover .card_body::before {
+    content: "";
+    display: block;
     position: absolute;
-    top: 50%; 
-    transform: translateY(-50%); 
-    z-index: 10; 
-    border: none;
-    border-color: none;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 
-}
-.left-arrow {
-    left: 0; /* Positioned at the left edge */
-    background-color: transparent;
-    opacity: 0;
-    
-}
-
-.right-arrow {
-    right: 0; /* Positioned at the right edge */
-    background-color: transparent;
-    opacity: 0;
-}
-.popular:hover .left-arrow, 
-.popular:hover .right-arrow {
-    opacity: 1;
-}
+  }
+  

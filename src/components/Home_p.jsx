@@ -4,10 +4,10 @@ import airpod from '../img/airpod.jpg'
 import iwatch from '../img/iwatch.jpg'
 import iw2 from '../img/iw2.jpg'
 import hp from '../img/hp.jpg'
-const Home_p= [
+const Home_p = [
     {
         id: '1',
-        img: i14 ,
+        img: i14,
         type: 'New',
         price: '100000 bdt',
         Name: 'Iphone 14 ',
@@ -20,7 +20,7 @@ const Home_p= [
         price: '1000 bdt',
         Name: 'Apple iPad Air 4th Gen',
         cat: ''
-    },    
+    },
     {
         id: '3',
         img: airpod,
@@ -28,7 +28,7 @@ const Home_p= [
         price: '1000 bdt',
         Name: '',
         cat: ''
-    },    {
+    }, {
         id: '4',
         img: iwatch,
         type: 'New',
@@ -53,6 +53,6 @@ const Home_p= [
         cat: ''
     },
 ]
- 
+
 
 export default Home_p

@@ -7,6 +7,7 @@ import Header from './components/Header'
 import Footer from './components/Footer'
 import useWindowSize from './useWindowSize';
 import Reg from './components/Reg';
+import Contact from './components/Contact';
 function App() {
   const { height } = useWindowSize();
   return (
@@ -19,6 +20,7 @@ function App() {
             <Route path='/Temp/' element={<Home />} />
             <Route path='/shop' element={<Shop />} />
             <Route path='/myaccount' element={<Reg />} />
+            <Route path='/contact' element={<Contact />} />
           </Routes>
         </div>
         <Footer />

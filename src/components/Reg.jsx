@@ -1,11 +1,15 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom'
+import Abg from '../img/Abg.mp4'
 import { Button, Container, Card, Col, Form, Row, Modal, InputGroup, Nav, Tabs, Tab } from 'react-bootstrap';
 function Reg() {
     return (
         <div className='card-below-header d-flex justify-content-center '>
-            <Card style={{ width: '30rem', marginBottom: '20px' }}>
+            <video autoPlay muted loop id="background-video" className="w-100 vh-100 position-fixed top-0 left-0">
+                <source src={Abg} type="video/mp4" />
+            </video>
+            <Card style={{ backgroundColor: '#F8F8F8', width: '30rem', marginBottom: '20px' }}>
                 <Tabs
                     defaultActiveKey="Registration"
                     id="uncontrolled-tab-example"

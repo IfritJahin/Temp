@@ -1,27 +1,43 @@
 import React from 'react'
-import { Link } from 'react-router-dom';
+
+
 import fb from '../img/fb.png';
 import insta from '../img/insta.png';
 import lk from '../img/lk.png';
-import '../assets/footer.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Container, Card } from 'react-bootstrap';
+
+import { Card, Container, Row, Col } from 'react-bootstrap';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFacebook, faInstagram, faLinkedin } from '@fortawesome/free-brands-svg-icons'; // Use free-brands-svg-icons for social media icons
+
+// ... other imports
+
 function Footer() {
   return (
-    <Card className='footer'>
+    <Card className='bg-dark footer ' style={{ borderRadius: '0' }}>
       <Card.Body>
-        <div className='footer'>
-          <div >
-            <img src={fb} alt='fb' className='icon'></img>
-            <img src={insta} alt='insta' className='icon'></img>
-            <img src={lk} alt='lk' className='icon'></img>
-          </div>
-          <div className='footertext'>© 2023 copyright all right reserved by None</div>
-        </div>
+        <Container className='align-items-center'>
+          <Row className="text-center">
+            <Col xs={12}>
+              <div className='footer-icons'>
+                <FontAwesomeIcon icon={faFacebook} className='icon m-3' style={{ color: "#ffffff", }} />
+                <FontAwesomeIcon icon={faInstagram} className='icon m-3' style={{ color: "#ffffff", }} />
+                <FontAwesomeIcon icon={faLinkedin} className='icon m-3' style={{ color: "#ffffff", }} />
+              </div>
+            </Col>
+          </Row>
+          <Row className="text-center color-white">
+            <Col xs={12}>
+              <div className='footertext '>
+                <h6 style={{ color: '#ffffff' }}>© 2023 copyright all right reserved by None</h6>
+              </div>
+            </Col>
+          </Row>
+        </Container>
       </Card.Body>
     </Card>
-
-  )
+  );
 }
 
-export default Footer
+export default Footer;

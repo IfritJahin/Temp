@@ -7,16 +7,29 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../assets/home.css';
 import Home_p from './home_p';
+import apple from '../img/apple.jpg';
 import appleImg from '../img/app3.jpg';
 import apple2Img from '../img/app1.jpg';
 import apple3Img from '../img/app2.png';
+import pic from '../img/download.jpeg'
+import pic1 from '../img/aw.jpg'
 import bgimg from '../img/bgimg.jpg';
+import addbg from '../img/addbg.png';
+import headset from '../img/headset.png';
+import demo from '../img/demo.png';
+import Sonos from '../img/Sonos.jpg';
+import phone from '../img/phone.png';
+import phone2 from '../img/phone2.png';
+import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCartShopping as faCartShopping } from '@fortawesome/free-solid-svg-icons'
 import { faBars as faBars } from '@fortawesome/free-solid-svg-icons'
-import { Card, Image, OverlayTrigger, Tooltip, Button } from 'react-bootstrap';
+import { Card, Image, OverlayTrigger, Tooltip, Button, Tab, Tabs, Form, Row, Col, Nav, Container, Badge } from 'react-bootstrap';
 import { faStar as faStar } from '@fortawesome/free-solid-svg-icons'
 import { faUser as faUser } from '@fortawesome/free-solid-svg-icons'
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
+
 function Home() {
 
   const settings = {
@@ -56,7 +69,7 @@ function Home() {
 
   return (
     <main>
-      <div className='mb-0' style={{ marginBottom: '0' }}>
+      <div className='' style={{ marginBottom: '0' }}>
         <Carousel data-bs-theme="light" >
           <Carousel.Item >
             <img
@@ -95,49 +108,193 @@ function Home() {
           </Carousel.Item>
         </Carousel>
       </div>
-      <h2 className='hp text-center mt-3'>Popular Products</h2>
-      <div className='bg-white' style={{ height: '520px', marginBottom: '20px' }}>
-        <div className="popular">
-          <div className='container'>
-            <Slider {...settings}>
-              {
-                Home_p.map((curElement) => {
-                  return (
-                    <div className='boxes' key={curElement.id} >
-                      <Card className='box' style={{ width: '18rem', maxHeight: '500px' }}>
-                        <Card.Img variant="top" className='img' style={{ maxHeight: '288px' }} src={curElement.img} alt='' />
-                        <Card.Body className='card_body'>
+      <div className='text-center mb-0'>
+        <Card className='' style={{ border: 'none' }}>
+          <Tabs
+            defaultActiveKey="Popular"
+            id="uncontrolled-tab-example"
+            className="mt-5 mb-3 d-flex justify-content-center"
+            variant="underline"
+            style={{ color: 'blue', fontSize: '20px' }}
+          >
+            <Nav.Item eventKey="Popular" title="Popular">
+              <Card.Body >
+                <div className='bg-white' style={{ height: '520px', marginBottom: '20px' }}>
+                  <div className="popular">
+                    <div className='container'>
+                      <Slider {...settings}>
+                        {
+                          Home_p.map((curElement) => {
+                            return (
+                              <div className='' key={curElement.id} >
+                                <Card className='box' style={{ width: '18rem', maxHeight: '500px' }}>
+                                  <Card.Img variant="top" className='img' style={{ maxHeight: '288px' }} src={curElement.img} alt='' />
+                                  <Card.Body className='card_body'>
+                                    <Card.Title className="box-title" ><h6>{curElement.Name || 'Product Name'}</h6></Card.Title>
+                                    <Card.Text className="box-description " style={{ maxHeight: '24px', }}><h7>{curElement.type || 'Product Description'}</h7></Card.Text>
+                                    <Card.Text className="box-price"><h6>Price: {curElement.price}</h6></Card.Text>
+                                    <Rating className='align-items-center'
+                                      emptySymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#fae500", }} />}
+                                      fullSymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#dde000", }} />}
+                                    />
+                                  </Card.Body>
+                                  <div className="hover-icons">
+                                    <div className='d-flex justify-content-center'>
+                                      <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: 'white', height: '3rem', width: '3em', }}>
+                                        <FontAwesomeIcon icon={faCartShopping} style={{ color: "grey", fontSize: '15px' }} />
+                                      </Button>
+                                      <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: 'white', height: '3rem', width: '3em', }}>
+                                        <FontAwesomeIcon icon={faBars} style={{ color: "grey", fontSize: '15px' }} />
+                                      </Button>
+                                    </div>
+                                    <Button variant="none" className='rounded-pill mt-3' style={{ color: 'white', background: 'rgba(10,27,52,1)', }}>Select Options</Button>
+                                  </div>
 
-
-                          <Card.Title className="box-title" ><h6>{curElement.Name || 'Product Name'}</h6></Card.Title>
-                          <Card.Text className="box-description " style={{ maxHeight: '24px', }}>{curElement.type || 'Product Description'}</Card.Text>
-                          <Card.Text className="box-price">Price: {curElement.price}</Card.Text>
-                          <Rating className='align-items-center'
-                            emptySymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#fae500", }} />}
-                            fullSymbol={<FontAwesomeIcon icon={faStar} style={{ color: "#dde000", }} />}
-                          />
-                        </Card.Body>
-                        <div className="hover-icons">
-                          <div className='d-flex justify-content-center'>
-                            <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: 'white', height: '3rem', width: '3em', }}>
-                              <FontAwesomeIcon icon={faCartShopping} style={{ color: "grey", fontSize: '15px' }} />
-                            </Button>
-                            <Button variant='none' className='rounded-circle align-items-center m-2' style={{ background: 'white', height: '3rem', width: '3em', }}>
-                              <FontAwesomeIcon icon={faBars} style={{ color: "grey", fontSize: '15px' }} />
-                            </Button>
-                          </div>
-                          <Button variant="none" className='rounded-pill mt-3' style={{ color: 'white', background: 'rgba(10,27,52,1)', }}>Select Options</Button>
-                        </div>
-
-                      </Card>
+                                </Card>
+                              </div>
+                            )
+                          })
+                        }
+                      </Slider>
                     </div>
-                  )
-                })
-              }
-            </Slider>
-          </div>
-        </div>
+                  </div>
+                </div>
+              </Card.Body>
+            </Nav.Item>
+            <Nav.Item eventKey="On Sale" title="On Sale">
+
+              <Card.Body >
+                <Card.Title className='mb-4 text-center' style={{ fontFamily: 'inherit', fontSize: '30px' }}>On Sale</Card.Title>
+
+
+              </Card.Body>
+            </Nav.Item>
+            <Nav.Item eventKey="Top Rated" title="Top Rated">
+              <Card.Body >
+                <Card.Title className='mb-4 text-center' style={{ fontFamily: 'inherit', fontSize: '30px' }}>Top Rated</Card.Title>
+
+
+              </Card.Body>
+            </Nav.Item>
+          </Tabs></Card>
       </div>
+      <div className='bg-container mb-5' style={{ height: '200px' }}>
+        <Container className='white d-flex align-items-center justify-content-center'>
+          <div class="centerBox">
+
+            <div class="categoryWrapper">
+              <h1 style={{ color: '#dac710' }}>20% Discount In All Products</h1>
+              <button>
+                <span>
+                  <span>
+                    <span data-attr-span="See the Range">
+                      See the Range
+                    </span>
+                  </span>
+                </span>
+              </button>
+            </div>
+
+          </div>
+        </Container>
+
+      </div>
+
+      <div className='mb-5'>
+        <Container>
+          <Row className='justify-content-md-center'>
+            <Col xs={12} md={8}>
+              <Carousel data-bs-theme="dark">
+                <Carousel.Item>
+                  <Image
+                    className="d-block w-100"
+                    src={Sonos}
+                    alt="First slide"
+                    rounded
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                  <Carousel.Caption className="text-caption" style={{ textAlign: 'left' }}>
+                    <h5>First slide label</h5>
+                    <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                  </Carousel.Caption>
+                </Carousel.Item>
+                <Carousel.Item>
+                  <Image
+                    className="d-block w-100"
+                    src={addbg}
+                    alt="First slide"
+                    rounded
+                    style={{ width: '100%', height: 'auto' }}
+                  />
+                  <Carousel.Caption className="text-caption">
+                    <div className='font' style={{ textAlign: 'left' }}>
+                      <h2 className='text-white'>The Westmire</h2>
+                      <h2 className='text-white'>
+                        <span><b>A56 Headset</b></span>
+                      </h2>
+                      <h5 className='text-white'>Today: <b style={{ color: '#FFDE59', fontSize: '40px' }}>29.99$</b></h5>
+                      <Button className='rounded-pill' variant='none' style={{ background: '#FFDE59', fontSize: '11px', width: '100px' }}>
+                        <Link to='/checkout' style={{ textDecoration: 'none', color: 'black' }}>
+                          <b>Buy Now</b><i className="fas" style={{ marginLeft: '5px' }}>
+                            <FontAwesomeIcon icon={faArrowRight} />
+                          </i>
+                        </Link>
+                      </Button>
+                      <Button className='rounded-pill m-2' variant='none' style={{ color: 'black', background: 'rgba(207, 205, 189, 0.4)', fontSize: '11px', width: '100px' }}>
+                        <b>Shop Now</b>
+                      </Button>
+                    </div>
+                  </Carousel.Caption>
+                </Carousel.Item>
+              </Carousel>
+            </Col>
+            <Col xs={12} md={4}>
+              <Row className='mb-2'>
+                <Col xs={12}>
+                  <div style={{ position: 'relative' }}>
+                    <Image src={phone} rounded style={{ width: '100%', height: 'auto', maxHeight: '200px' }} />
+                    <Button className='rounded-pill buy-now-button' variant='none' style={{ position: 'absolute', bottom: '15px', left: '18px', background: '#FFDE59', fontSize: '9px', width: '100px' }}>
+                      <Link to='/checkout' style={{ textDecoration: 'none', color: 'black' }}>
+                        <b>Buy Now</b><i className="fas" style={{ marginLeft: '5px' }}>
+                          <FontAwesomeIcon icon={faArrowRight} />
+                        </i>
+                      </Link>
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+              <Row>
+                <Col xs={12}>
+                  <div style={{ position: 'relative' }}>
+                    <Image src={phone2} rounded style={{ width: '100%', height: 'auto', maxHeight: '200px' }} />
+                    <Button className='rounded-pill buy-now-button' variant='none' style={{ position: 'absolute', bottom: '8px', left: '18px', background: '#FFDE59', fontSize: '9px', width: '100px' }}>
+                      <Link to='/checkout' style={{ textDecoration: 'none', color: 'black' }}>
+                        <b>Buy Now</b><i className="fas" style={{ marginLeft: '5px' }}>
+                          <FontAwesomeIcon icon={faArrowRight} />
+                        </i>
+                      </Link>
+                    </Button>
+                  </div>
+                </Col>
+              </Row>
+            </Col>
+          </Row>
+        </Container>
+      </div>
+      <div className='cont'>
+        <video autoPlay muted loop>
+          <source
+            src="https://mdbootstrap.com/img/video/Sail-Away.mp4"
+            type="video/mp4"
+          />
+        </video>
+        <h2 className="h text-center font-weight-bold display-1 text-uppercase bg-white">
+          sale
+        </h2>
+
+      </div>
+
+
     </main >
   )
 };

@@ -179,15 +179,7 @@ video {
 }
 
 /* Add this to your stylesheet or in your component's style tag */
-@media (max-width: 768px) {
-  .img {
-      width: 90%;
-  }
-  .box {
-      width: 90%;
-      margin: 1%; /* Reduce margin on smaller devices */
-  }
-}
+
 .custom-button {
   background-color: #c3bfa3;
   color: white;
@@ -199,5 +191,47 @@ video {
   background-color: #f0ee6f; 
   color: #fffafa;
 }
+.bg-container{
+  background-image: url('../img/abg.jpg');
+}
+.bg-con {
+  /* Remove height: '150px' from inline style */
+  display: flex;
+  position: absolute;
+  margin-top: 25px;
+  background-color: #e7e7e7;
+  justify-content: center;
+  height: auto; /* Allow height to adjust based on content */
+  margin-left: 18px;
+  max-width: 1080px;
+  width: 100%;
+}
+.btnr {
+  position: relative;
+  display: inline-block;
+  padding: 10px 20px;
+  color: black; /* Adjust text color as needed */
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: border-color 0.3s ease;
+}
+
+.btnr:hover {
+  border-color: white;
+}
 
 
+@media (max-width: 768px) {
+  .img {
+      width: 90%;
+  }
+  .box {
+      width: 90%;
+      margin: 1%; /* Reduce margin on smaller devices */
+  }
+  .bg-con {
+    height: auto;/* Adjust styles for smaller screens */
+    width: 90%;
+    
+  }
+}

@@ -7,27 +7,20 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import '../assets/home.css';
 import Home_p from './home_p';
-import apple from '../img/apple.jpg';
 import appleImg from '../img/app3.jpg';
 import apple2Img from '../img/app1.jpg';
 import apple3Img from '../img/app2.png';
-import pic from '../img/download.jpeg'
-import pic1 from '../img/aw.jpg'
-import bgimg from '../img/bgimg.jpg';
 import addbg from '../img/addbg.png';
-import headset from '../img/headset.png';
-import demo from '../img/demo.png';
 import Sonos from '../img/Sonos.jpg';
 import phone from '../img/phone.png';
 import phone2 from '../img/phone2.png';
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping as faCartShopping } from '@fortawesome/free-solid-svg-icons'
-import { faBars as faBars } from '@fortawesome/free-solid-svg-icons'
+import { faBars as faBars, faCartShopping, faStar, faArrowRight } from '@fortawesome/free-solid-svg-icons'
 import { Card, Image, OverlayTrigger, Tooltip, Button, Tab, Tabs, Form, Row, Col, Nav, Container, Badge } from 'react-bootstrap';
-import { faStar as faStar } from '@fortawesome/free-solid-svg-icons'
+
 import { faUser as faUser } from '@fortawesome/free-solid-svg-icons'
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+
 
 
 function Home() {
@@ -178,27 +171,36 @@ function Home() {
             </Nav.Item>
           </Tabs></Card>
       </div>
-      <div className='bg-container mb-5' style={{ height: '200px' }}>
-        <Container className='white d-flex align-items-center justify-content-center'>
-          <div class="centerBox">
+      <Container className='bg-container mb-5' style={{ height: '200px' }}>
+        <div className='bg-con' style={{ height: '150px' }}>
+          <div className="centerBox mt-3">
+            <div className="categoryWrapper">
+              <Row className="justify-content-md-center mt-3">
+                <Col sm={12} md={4} lg={4} style={{ textAlign: 'right' }}>
+                  <div className='mt-3'>
+                    <span>New Deals </span><br></br>
+                    <span>Start Daily at 12pm</span>
+                  </div>
+                </Col>
 
-            <div class="categoryWrapper">
-              <h1 style={{ color: '#dac710' }}>20% Discount In All Products</h1>
-              <button>
-                <span>
-                  <span>
-                    <span data-attr-span="See the Range">
-                      See the Range
+                <Col sm={12} md={8} lg={8} className='ml-3'>
+                  <h4 style={{ color: '#2a2a28' }}>20% Discount In All Products</h4>
+                  <Button className='btnr rounded-pill' variant='none' style={{ backgroundColor: '#ffe63b', width: '250px' }}>
+                    <span style={{ marginRight: '25px' }}>
+                      <span>
+                        <span data-attr-span="See the Range">
+                          See the Range
+                        </span>
+                      </span>
                     </span>
-                  </span>
-                </span>
-              </button>
+                    <FontAwesomeIcon icon={faArrowRight} beat size='lg' />
+                  </Button>
+                </Col>
+              </Row>
             </div>
-
           </div>
-        </Container>
-
-      </div>
+        </div>
+      </Container>
 
       <div className='mb-5'>
         <Container>

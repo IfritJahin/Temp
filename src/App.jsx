@@ -9,6 +9,7 @@ import useWindowSize from './useWindowSize';
 import Reg from './components/Reg';
 import Contact from './components/Contact';
 import Help from './components/Help';
+import Checkout from './components/Checkout';
 function App() {
   const { height } = useWindowSize();
   return (
@@ -23,6 +24,7 @@ function App() {
             <Route path='/myaccount' element={<Reg />} />
             <Route path='/contact' element={<Contact />} />
             <Route path='/help' element={<Help />}></Route>
+            <Route path='/checkout' element={<Checkout />}></Route>
           </Routes>
         </div>
         <Footer />

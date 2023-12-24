@@ -140,17 +140,15 @@ function Header({ onSearch }) {
                                                         <Button size='lg' variant='none' className='custom-button'>
                                                             CONTINUE SHOPPING
                                                         </Button>
-                                                        <Button size='lg' variant='none' style={{ background: '#FFDE59', color: 'white', borderRadius: 0 }}>
-                                                            PROCEED TO CHECKOUT
-                                                        </Button>
+                                                        <Link to='/checkout' >
+                                                            <Button size='lg' variant='none' style={{ background: '#FFDE59', color: 'white', borderRadius: 0 }}>
+                                                                PROCEED TO CHECKOUT
+                                                            </Button>
+                                                        </Link>
                                                     </div>
                                                 </Offcanvas.Body>
                                             </Offcanvas>
 
-                                        </div>
-
-                                        <div className="d-flex align-items-center m-3">
-                                            <FontAwesomeIcon icon={faBars} style={{ color: "white", fontSize: '25px' }} />
                                         </div>
                                     </div>
                                 </div>

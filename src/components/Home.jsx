@@ -181,6 +181,7 @@ function Home() {
                     <span>New Deals </span><br></br>
                     <span>Start Daily at 12pm</span>
                   </div>
+
                 </Col>
 
                 <Col sm={12} md={8} lg={8} className='ml-3'>
